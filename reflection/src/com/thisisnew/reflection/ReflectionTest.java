@@ -7,7 +7,29 @@ public class ReflectionTest {
 	private Tool use;
 	
 	public enum Tool{
-		INTELLIJ, ECLIPSE
+		INTELLIJ, ECLIPSE;
+	}
+	
+	public ReflectionTest() {
+		
+	}
+	
+	private ReflectionTest(Tool use) { //private
+		setUse(use);
+		System.out.println("Tool : " + getUse());
+	}
+	
+	private void setNameAndUse(String name, Tool use) { //private
+		setName(name);
+		setUse(use);
+	}
+	
+	public Tool getUse() {
+		return use;
+	}
+
+	public void setUse(Tool use) {
+		this.use = use;
 	}
 	
 	public String getName() {
@@ -24,14 +46,5 @@ public class ReflectionTest {
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public Tool getUse() {
-		return use;
-	}
-
-	public void setUse(Tool use) {
-		this.use = use;
-	}
-	
+	}	
 }
