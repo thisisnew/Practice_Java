@@ -20,7 +20,7 @@ public class GetReflectionTest {
              
              field.set(reflectionTest, "Thisisnew"); // 값 설정
              Object fieldValue = field.get(reflectionTest);// 값 받아오기
-             System.out.println("fieldValue의 "fieldValue);
+             System.out.println(fieldValue);
            }
          }
         } catch (Exception e) {
