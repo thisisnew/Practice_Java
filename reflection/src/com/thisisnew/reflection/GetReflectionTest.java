@@ -2,28 +2,25 @@
 
 package com.thisisnew.reflection;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Field;
 
 public class GetReflectionTest {
   public static void main(String[] args) {
-	
-    String[] nameArr = {"홍길동","임꺽정","아무개","라이언"};
-  
+
     try {
-    	ReflectionTest reflectionTest = new ReflectionTest(); //invoke()를 실행하는데 필요한 객체 생성
+        ReflectionTest reflectionTest = new ReflectionTest(); 
         Class refClass = Class.forName("com.thisisnew.reflection.ReflectionTest");
-        Method[] refMethod = refClass.getDeclaredMethods();
+        Field[] refField = refClass.getDeclaredFields();
         
         try {
-         for(int i=0; i<refMethod.length; i++) {
-           if(refMethod[i].getName().equals("setName")) {
-             for(int j=0; j<nameArr.length; j++) {
-               System.out.println("-----------setName 실행 -----------");
-               refMethod[i].invoke(reflectionTest, nameArr[j]); //객체와 매게변수를 넣고 실행
-               
-               System.out.println("-----------getName 실행 -----------");
-               System.out.println(reflectionTest.getName());
-             }
+         for(int i=0; i<refField.length; i++) {
+           if(refField[i].getName().equals("name")) {
+             Field field = refClass.getDeclaredField(refField[i].getName());
+             field.setAccessible(true);
+             
+             field.set(reflectionTest, "Thisisnew"); // 값 설정
+             Object fieldValue = field.get(reflectionTest);// 값 받아오기
+             System.out.println("fieldValue의 "fieldValue);
            }
          }
         } catch (Exception e) {
