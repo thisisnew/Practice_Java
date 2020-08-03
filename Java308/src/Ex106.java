@@ -11,7 +11,7 @@ public class Ex106 {
 		
 		
 		
-		list.removeIf(s -> s.startsWith("AA"));
+		list.removeIf(s -> s.equals("AA"));
 		
 		System.out.println(list);
 		
